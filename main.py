@@ -8,6 +8,8 @@ this.endereco = ""
 this.data = ""
 this.dados = ""
 this.modelo = model()
+this.codigo = 0
+this.msg = ""
 
 
 pessoa = Flask(__name__)
@@ -24,6 +26,7 @@ def cadastrar():
 @pessoa.route('/consultar.html',methods=['GET','POST'])
 def consultarTudo():
     if request.method == 'POST':
+        this.codigo = request.form('tNovoCodigo')
         this.msg = this.modelo.consultar()
     return render_template('consultar.html',titulo="Consultar",dados=this.msg)
 if __name__ == '__main__':

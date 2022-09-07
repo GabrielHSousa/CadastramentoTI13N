@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask, render_template, request
 from model import model
 import this
@@ -20,6 +21,10 @@ def cadastrar():
         this.data     = request.form['tNovaData']
         this.dados    = this.modelo.inserir(this.nome,this.telefone,this.endereco,this.data)
     return render_template('index.html',titulo="Pagina Principal", resultado=this.dados) 
-
+@pessoa.route('/consultar.html',methods=['GET','POST'])
+def consultarTudo():
+    if request.method == 'POST':
+        this.msg = this.modelo.consultar()
+    return render_template('consultar.html',titulo="Consultar",dados=this.msg)
 if __name__ == '__main__':
     pessoa.run(debug=True,port=5000)

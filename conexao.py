@@ -3,11 +3,8 @@ from mysql.connector import errorcode
 
 class conexao:
     def __init__(self):
-        
-        self.db_connection = ""
-        self.con = ""
-        self.con = self.db_connection.cursor()
-
+        pass
+    
     def conectar(self):
         try:
             self.db_connection = mysql.connector.connect(host="localhost",user="root",password="",database="bancoFlask")
